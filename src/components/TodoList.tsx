@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {TodoType} from "../types/todo";
 import AddTodo from "./AddTodo";
 import Todo from "./Todo";
+import {Affix, notification} from "antd";
+import ScrollNumber from "antd/es/badge/ScrollNumber";
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<TodoType[]>(() => {
@@ -14,6 +16,14 @@ const TodoList: React.FC = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos])
     const handleAddTodo = (newTodo: TodoType) => {
+        if(todos.length > 9){
+            notification.error({
+                message: "Уведомление",
+                description: "Вы не можете добавить больше 10-ти todo!",
+                placement: "topRight"
+            })
+            return
+        }
         setTodos([newTodo, ...todos])
     }
     const handleDeleteTodo = (todo: TodoType) => {
@@ -31,13 +41,13 @@ const TodoList: React.FC = () => {
     return (
         <div className={"w-full h-full"}>
             <AddTodo onAdd={handleAddTodo}/>
-            <div className={"flex flex-col w-full overflow-y-auto"}>
+            <div className={"flex flex-col w-full h-full"}>
                 {todos.length > 0 ?
                     todos.map((todo, index)=>
                         <Todo key={index} todo={todo} index={index} onDelete={handleDeleteTodo} onEdit={handleEditTodo}/>
                     )
                     :
-                    <p>Добавьте новый todo</p>
+                    <p className={"text-center text-2xl mt-72"}>Добавьте новый todo</p>
                 }
             </div>
         </div>
