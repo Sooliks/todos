@@ -39,5 +39,4 @@ const AddTodo: React.FC<AddTodoProps> = ({onAdd}) => {
         </form>
     );
 };
-
 export default AddTodo;

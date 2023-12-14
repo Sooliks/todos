@@ -29,9 +29,8 @@ const TodoList: React.FC = () => {
     }
     const handleEditTodo = (todo: TodoType, newAction: string, index: number) => {
         setTodos(prev=>{
-            const newTodo = todo;
-            newTodo.action = newAction;
-            prev[index] = newTodo;
+            todo.action = newAction;
+            prev[index] = todo;
             localStorage.setItem('todos', JSON.stringify(prev))
             return prev;
         });
