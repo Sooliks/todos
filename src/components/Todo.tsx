@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {TodoType} from "../types/todo";
-import {Button, Input} from "antd";
+import {Button, Input, notification} from "antd";
 import {CloseOutlined, EditOutlined, SaveOutlined} from "@ant-design/icons";
 
 
@@ -14,12 +14,20 @@ const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
     const [isEditing,setIsEditing] = useState<boolean>(false)
     const [newAction,setNewAction] = useState<string>(todo.action);
     const handleSave = () => {
+        if(!newAction){
+            notification.error({
+                message: "Уведомление",
+                description: "Заполните поле!",
+                placement: "topRight"
+            })
+            return
+        }
         onEdit(todo, newAction, index)
         setIsEditing(false)
     }
     return (
         <div
-            className={"w-full min-h-2 text-gray-900 flex border-2 h-12 mt-4 items-center relative"}
+            className={"w-full h-12 text-gray-900 flex border-2 mt-4 items-center relative"}
             style={{
                 border: '1px solid #e5e7eb'
             }}

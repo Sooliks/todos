@@ -10,6 +10,7 @@ const TodoList: React.FC = () => {
         return [];
     });
     useEffect(()=>{
+        console.log('f')
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos])
     const handleAddTodo = (newTodo: TodoType) => {
@@ -19,10 +20,13 @@ const TodoList: React.FC = () => {
         setTodos(prev=>prev.filter(t=>t!==todo))
     }
     const handleEditTodo = (todo: TodoType, newAction: string, index: number) => {
-        const newTodos = todos;
-        newTodos[index] = {...todo, action: newAction}
-        console.log(newTodos)
-        setTodos(newTodos);
+        setTodos(prev=>{
+            const newTodo = todo;
+            newTodo.action = newAction;
+            prev[index] = newTodo;
+            localStorage.setItem('todos', JSON.stringify(prev))
+            return prev;
+        });
     }
     return (
         <div className={"w-full h-full"}>

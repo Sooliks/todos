@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StatusTodo, TodoType} from "../types/todo";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
@@ -14,6 +14,7 @@ interface CustomForm extends HTMLFormElement {
     readonly elements: CustomElements;
 }
 const AddTodo: React.FC<AddTodoProps> = ({onAdd}) => {
+    const [inputValue,setInputValue] = useState<string>("")
     const handleSubmit = (e: React.FormEvent<CustomForm>) => {
         e.preventDefault()
         const target = e.currentTarget.elements;
@@ -29,10 +30,11 @@ const AddTodo: React.FC<AddTodoProps> = ({onAdd}) => {
             action: target.action.value,
             status: StatusTodo.NotStarted,
         })
+        setInputValue("")
     }
     return (
         <form onSubmit={handleSubmit} className={"w-full flex flex-row mt-4 relative"}>
-            <Input name={"action"} placeholder={"Задание"}/>
+            <Input onChange={(newValue)=>setInputValue(newValue)} value={inputValue} name={"action"} placeholder={"Задание"}/>
             <Button typeHtml={"submit"} type={"outlined"} className={"absolute inset-y-0 right-0"}>Добавить</Button>
         </form>
     );
