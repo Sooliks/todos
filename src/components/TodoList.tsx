@@ -31,7 +31,7 @@ const TodoList: React.FC = () => {
     return (
         <div className={"w-full h-full"}>
             <AddTodo onAdd={handleAddTodo}/>
-            <div className={"w-full overflow-auto"}>
+            <div className={"flex flex-col w-full overflow-y-auto"}>
                 {todos.length > 0 ?
                     todos.map((todo, index)=>
                         <Todo key={index} todo={todo} index={index} onDelete={handleDeleteTodo} onEdit={handleEditTodo}/>
