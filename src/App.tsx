@@ -1,8 +1,6 @@
 import React from 'react';
 import Card from "./components/Card";
 import './global.css'
-import Input from "./components/ui/Input";
-import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 function App() {
   return (

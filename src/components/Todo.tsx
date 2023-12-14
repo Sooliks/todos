@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {TodoType} from "../types/todo";
 import {Button, Input, notification} from "antd";
 import {CloseOutlined, EditOutlined, SaveOutlined} from "@ant-design/icons";
