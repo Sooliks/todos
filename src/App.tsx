@@ -14,7 +14,7 @@ function App() {
         justifyContent: 'center',
         alignItems: 'center'
     }}>
-      <Card style={{width: '40vw', height: '80vh'}}>
+      <Card style={{width: '43vw', height: '80vh'}}>
           <TodoList/>
       </Card>
     </div>

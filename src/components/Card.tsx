@@ -12,10 +12,12 @@ const Card: React.FC<CardProps> = ({children,style}) => {
             ...style,
             width: style?.width || 100,
             height: style?.height || 100,
-            border: '1px solid rgb(51,51,51)',
             borderRadius: '20px',
-            padding: 10
-        }}>
+            padding: 20,
+            backgroundColor: '#f8fafc'
+        }}
+             className={"bg-clip-border rounded-xl shadow-blue-gray-500/40"}
+        >
             {children}
         </div>
     );

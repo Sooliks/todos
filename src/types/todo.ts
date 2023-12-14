@@ -1,5 +1,4 @@
 export type TodoType = {
-    id: number
     action: string
     status: StatusTodo
 }
