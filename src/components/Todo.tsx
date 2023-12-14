@@ -12,7 +12,7 @@ type TodoProps = {
 }
 const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
     const [isEditing,setIsEditing] = useState<boolean>(false)
-    const [newAction,setNewAction] = useState<string>(todo.action);
+    const [newAction,setNewAction] = useState<string>("");
     const handleSave = () => {
         if(!newAction){
             notification.error({
@@ -22,7 +22,7 @@ const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
             })
             return
         }
-        onEdit(todo, newAction, index)
+        onEdit(todo, newAction || todo.action, index)
         setIsEditing(false)
     }
     return (

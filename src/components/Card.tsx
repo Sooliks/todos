@@ -1,12 +1,10 @@
 import React, {CSSProperties} from 'react';
 
-
 type CardProps = {
     children?: React.ReactNode
     style?: CSSProperties
     className?: string
 }
-
 const Card: React.FC<CardProps> = ({children,style, className}) => {
     return (
         <div style={{

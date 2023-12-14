@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {TodoType} from "../types/todo";
 import AddTodo from "./AddTodo";
 import Todo from "./Todo";
-import {Affix, notification} from "antd";
-import ScrollNumber from "antd/es/badge/ScrollNumber";
+import {notification} from "antd";
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<TodoType[]>(() => {
@@ -12,7 +11,6 @@ const TodoList: React.FC = () => {
         return [];
     });
     useEffect(()=>{
-        console.log('f')
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos])
     const handleAddTodo = (newTodo: TodoType) => {
