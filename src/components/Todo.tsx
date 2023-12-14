@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {TodoType} from "../types/todo";
-import {Button, Input, notification} from "antd";
+import {Button, Input, notification, Typography} from "antd";
 import {CloseOutlined, EditOutlined, SaveOutlined} from "@ant-design/icons";
-
+const { Text } = Typography;
 
 type TodoProps = {
     todo: TodoType
@@ -14,14 +14,6 @@ const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
     const [isEditing,setIsEditing] = useState<boolean>(false)
     const [newAction,setNewAction] = useState<string>("");
     const handleSave = () => {
-        if(!newAction){
-            notification.error({
-                message: "Уведомление",
-                description: "Заполните поле!",
-                placement: "topRight"
-            })
-            return
-        }
         onEdit(todo, newAction || todo.action, index)
         setIsEditing(false)
     }
@@ -41,9 +33,9 @@ const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
                     <Button className={"ml-1"} icon={<SaveOutlined />} onClick={handleSave}/>
                 </div>
                 :
-                <p className={"ml-2"}>
+                <Text ellipsis className={"ml-2 w-10/12"}>
                     {todo.action}
-                </p>
+                </Text>
             }
             <div className={"absolute inset-y-0 right-0 flex items-center mx-2"}>
                 <Button icon={<EditOutlined />} className={"mr-2"} onClick={()=>setIsEditing(!isEditing)}/>
