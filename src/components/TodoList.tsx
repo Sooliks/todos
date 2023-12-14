@@ -16,10 +16,13 @@ const TodoList: React.FC = () => {
         setTodos([newTodo, ...todos])
     }
     const handleDeleteTodo = (todo: TodoType) => {
-
+        setTodos(prev=>prev.filter(t=>t!==todo))
     }
-    const handleEditTodo = (todo: TodoType, newAction: string) => {
-
+    const handleEditTodo = (todo: TodoType, newAction: string, index: number) => {
+        const newTodos = todos;
+        newTodos[index] = {...todo, action: newAction}
+        console.log(newTodos)
+        setTodos(newTodos);
     }
     return (
         <div className={"w-full h-full"}>

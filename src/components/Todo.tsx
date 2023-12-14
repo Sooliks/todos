@@ -8,13 +8,14 @@ type TodoProps = {
     todo: TodoType
     index: number
     onDelete: (todo: TodoType) => void
-    onEdit: (todo: TodoType, newAction: string) => void
+    onEdit: (todo: TodoType, newAction: string, index: number) => void
 }
 const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
     const [isEditing,setIsEditing] = useState<boolean>(false)
-    const [newAction,setNewAction] = useState<string>("");
+    const [newAction,setNewAction] = useState<string>(todo.action);
     const handleSave = () => {
-        onEdit(todo, newAction)
+        onEdit(todo, newAction, index)
+        setIsEditing(false)
     }
     return (
         <div
