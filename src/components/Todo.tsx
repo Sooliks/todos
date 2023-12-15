@@ -20,9 +20,7 @@ const Todo: React.FC<TodoProps> = ({todo, index, onDelete, onEdit}) => {
     return (
         <div
             className={"w-full h-12 text-gray-900 flex border-2 mt-4 items-center relative"}
-            style={{
-                border: '1px solid #e5e7eb'
-            }}
+            style={{borderRadius: '7px'}}
         >
             <span className={"ml-2 rounded-full py-1 px-1 text-xs font-medium content-[''] leading-none grid place-items-center bg-red-500 text-white w-[24px] h-[24px]"}>
                 {index + 1}
